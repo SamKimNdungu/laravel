@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
+ 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/kimani', 'reminder@one');
+Route::middleware(['auth'])->group(function() {
+    Route::get('/stories', 'StoriesControllers@index');
+});
